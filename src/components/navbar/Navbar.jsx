@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link"
 import styles from "./navbar.module.css"
-import { usePathname } from "next/navigation";
+import LinkItem from "./LinkItem";
+import { useState } from "react";
 
 const links = [
     {
@@ -29,41 +30,54 @@ const isAdmin = true
 
 function Navbar()
 {
-    const pathName = usePathname()
+    const [open, setOpen] = useState(false);
     return(
+    <div>
        <div className={styles.container}>
         <div className={styles.logo}>Logo</div>
         <div className={styles.list}>
             {
                 links.map((link=>(
-                    <Link 
-                    className={`${styles.linkItem} ${pathName === link.path && styles.active}`} 
-                    href={link.path} key={link.title}>
-                        {link.title}
-                    </Link>
+                    <LinkItem item={link} key={link.title}/>
                 )))
             }
             {
                 session?(
                     <>
                     {isAdmin && (
-                    <Link 
-                        className={`${styles.linkItem} ${pathName === "/admin" && styles.active}`} 
-                        href='/admin'>
-                        Admin
-                    </Link>) }
+                        <LinkItem item={{ title: "Admin", path: "/admin"}}/>)
+                    }
                     <button className={styles.logout}>Logout</button>
                     </>
                 ):(
-                    <Link 
-                        className={`${styles.linkItem} ${pathName === "/login" && styles.active}`} 
-                        href='/login'>
-                        Login
-                    </Link>
-                )
+                    <LinkItem item={{ title: "Login", path: "/login"}}/>)
+        
             }
         </div>
        </div>
+       <button className={styles.menuButton} onClick={() => setOpen(open => !open)}>Menu</button>
+       {
+        open && <div className={styles.mobilelist}>
+            {
+                links.map((link=>(
+                    <LinkItem item={link} key={link.title}/>
+                )))
+            }
+            {
+                session?(
+                    <>
+                    {isAdmin && (
+                        <LinkItem item={{ title: "Admin", path: "/admin"}}/>)
+                    }
+                    <button className={styles.logout}>Logout</button>
+                    </>
+                ):(
+                    <LinkItem item={{ title: "Login", path: "/login"}}/>)
+        
+            }
+        </div>
+       }
+    </div>
     )
 }
 
