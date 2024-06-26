@@ -1,6 +1,6 @@
 :root{
   --bg: black;
-  --txt: white;
+  --text: white;
   --bgSoft: #2d2b42;
   --textSoft: #e5e5e5;
   --btn: #3673fd;
@@ -20,4 +20,16 @@ body{
 a{
   text-decoration: none;
   color: inherit;
+}
+
+.container{
+  background-color: blue;
+  width: 90%;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
