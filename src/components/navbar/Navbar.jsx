@@ -54,10 +54,9 @@ function Navbar()
         
             }
         </div>
-       </div>
        <button className={styles.menuButton} onClick={() => setOpen(open => !open)}>Menu</button>
        {
-        open && <div className={styles.mobilelist}>
+           open && <div className={styles.mobilelist}>
             {
                 links.map((link=>(
                     <LinkItem item={link} key={link.title}/>
@@ -73,10 +72,11 @@ function Navbar()
                     </>
                 ):(
                     <LinkItem item={{ title: "Login", path: "/login"}}/>)
-        
-            }
+                    
+                }
         </div>
        }
+       </div>
     </div>
     )
 }
