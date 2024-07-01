@@ -48,8 +48,6 @@
     }
     .menuButton{
         display: block;
-        top: 0;
-        padding: 10px;
     }
     
     .mobilelist{
@@ -60,9 +58,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: var(--bg);
         gap: 10px;
         top: 80px;
         height: calc(100vh - 80px);
-        background: red;
+        z-index: 1;
     }
 }

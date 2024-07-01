@@ -3,6 +3,7 @@ import Link from "next/link"
 import styles from "./navbar.module.css"
 import LinkItem from "./LinkItem";
 import { useState } from "react";
+import Image from "next/image";
 
 const links = [
     {
@@ -54,7 +55,9 @@ function Navbar()
         
             }
         </div>
-       <button className={styles.menuButton} onClick={() => setOpen(open => !open)}>Menu</button>
+       <Image src='/menu.png' alt="Menu"
+       className={styles.menuButton}
+       onClick={() => setOpen(open => !open)} width={30} height={30}/>
        {
            open && <div className={styles.mobilelist}>
             {
